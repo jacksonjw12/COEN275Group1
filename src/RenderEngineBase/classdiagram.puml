@@ -1,0 +1,130 @@
+@startuml
+class Game {
+    +Scene[] scenes
+    +Application application
+    ____
+    +void setScene(string name)
+    +void start()
+}
+class DodgeGame {
+
+    ____
+    +DodgeGame()
+
+}
+class Time {
+    +int frameNumber
+    +long startMillis
+    +long startLoopTime
+    +long nexLoopTime
+    +int deltaTime
+}
+class GameLoop<extends Runnable> {
+    +Game game
+    +Time time
+    +Renderer renderer
+    -int targetFPS
+    __
+    -void gameLoop()
+
+}
+note left of GameLoop
+  void <b>gameLoop</b>(){
+    game.scene.update(time.deltaTime)//do game logic
+    renderer.render(game.scene)//display gameobjects and gui elements
+    this.syncFrameRate()//update dt, sleep thread if running too fast
+  }
+end note
+class Scene {
+    +String name
+    +GUIElement[] guiElements
+    +GameObject[] gameObjects
+    +Camera camera
+    __
+    +void render()
+
+}
+class GUIElement {
+    +Image image
+    +int zIndex
+    +Vector2 pos
+    +double rotation
+    +double scale
+    +Vector2 relativeCenter
+}
+class GameObject {
+    +String identifier
+    +Vector3 position
+    +Vector3 rotation
+    +double scale
+    +Model model
+
+}
+class Model {
+    +Vector3[] vertices
+    +Face[] faces
+}
+class Face{
+    +int[] vertexIndeces
+    +String color
+}
+note left of Face
+    Stores location of face indices
+    within the list of vertices in
+    the model
+end note
+class Camera{
+    +Vector3 position
+    +Vector3 rotation
+    +double pov
+}
+class Main{
+{static} main()
+}
+class Application {
+    +JFrame frame
+    +Canvas canvas
+    +BufferStrategy bufferStrategy
+    +Input input
+    ____
+    +int getWidth()
+    +int getHeight()
+    +void setResolution(int width, int height)
+    +void goFullscreen()
+    +void quit()
+
+}
+class Input <implements MouseMotionListener\nImplements KeyListener>{
+    -private Map<String, Boolean> keysDown;
+    -private Vector2 mouseDeltaMovement;
+    -private Vector2 mousePosition
+
+}
+package "Common" #DDDDDD {
+  class Vector3{
+    +double x
+    +double y
+    +double z
+  }
+  class Vector2{
+    +double x
+    +double y
+  }
+}
+
+Game <|--- DodgeGame
+Game "1" *-- "1" GameLoop
+Game "1" *-- "1" Application
+Main "1" *- "1" DodgeGame
+Game "1" *-- "1..*" Scene
+Scene "1" *-- "1..*" GUIElement
+Scene "1" *-- "1..*" GameObject
+Camera "1" -- "1" Scene
+Application "1" -- "1" Input
+GameObject -- Model
+Model "1" -- "1..*" Face
+GameLoop --- Time
+
+
+
+@enduml
