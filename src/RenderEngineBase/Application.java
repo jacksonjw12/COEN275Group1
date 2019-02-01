@@ -3,18 +3,62 @@ package RenderEngineBase;
 import javax.swing.*;
 import java.awt.*;
 
+import java.awt.image.BufferStrategy;
+
 public class Application {
-    private static Frame frame;
-    private static Canvas canvas;
-    private static RenderEngine engine;
-    private static boolean notFullscreen = true;
-    private static boolean cursorVisible = true;
+    private JFrame frame;
+    private Canvas canvas;
+    private Game game;
+    private Input input;
+    private boolean notFullscreen = true;
+    private boolean cursorVisible = true;
+    private BufferStrategy strategy;
+    public static final int TARGET_FPS = 60;
+    public static final int FRAME_DELAY = 1000/TARGET_FPS;
 
-    public Application(JFrame f, Canvas c, RenderEngine e) {
-        frame = f;
-        canvas = c;
-        engine = e;
+    public Application(Game game) {
 
+        this.game = game;
+
+        frame = new JFrame();
+
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setSize(1000, 1000);
+
+        canvas = new Canvas();
+        frame.getContentPane().add(canvas);
+        input = new Input(canvas);
+
+
+
+        BufferCapabilities bc = new BufferCapabilities(new ImageCapabilities(true),new ImageCapabilities(true),null);
+        try{
+            this.canvas.createBufferStrategy(2,bc);
+        }
+        catch(java.awt.AWTException e){
+            System.out.println("bad buffer capabilities");
+            this.canvas.createBufferStrategy(2);
+        }
+        strategy = this.canvas.getBufferStrategy();
+
+
+
+        frame.setVisible(true);
+
+
+
+
+
+
+
+
+    }
+
+    public BufferStrategy getStrategy(){
+        return this.strategy;
+    }
+    public Input getInput(){
+        return this.input;
     }
 
 //    public static void hideCursor() {
@@ -30,11 +74,11 @@ public class Application {
 //        cursorVisible = true;
 //    }
 
-    public static boolean isCursorVisible() {
+    public boolean isCursorVisible() {
         return cursorVisible;
     }
 
-    public static void quit() {
+    public void quit() {
         // Stop showing window
         frame.setVisible(false);
 
@@ -45,7 +89,7 @@ public class Application {
         System.exit(0);
     }
 
-    public static void goFullscreen() {
+    public void goFullscreen() {
         if (notFullscreen) {
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setUndecorated(true);
@@ -53,15 +97,15 @@ public class Application {
         }
     }
 
-    public static void setResolution(int width, int height) {
+    public void setResolution(int width, int height) {
         frame.setSize(width, height);
     }
 
-    public static int getWidth() {
+    public int getWidth() {
         return frame.getWidth();
     }
 
-    public static int getHeight() {
+    public int getHeight() {
         return frame.getHeight();
     }
 }
