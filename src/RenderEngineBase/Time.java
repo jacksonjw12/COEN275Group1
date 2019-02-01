@@ -1,17 +1,18 @@
 package RenderEngineBase;
 
 public class Time {
-    public static double deltaTime = 0;
-    public static long frameNumber = 0;
-    public static long cycleTime;
-    public static long nextCycleTime;
+    public double deltaTime = 0;
+    public long frameNumber = 0;
+    public long cycleTime;
+    public long nextCycleTime;
     //Record average fps over 60 frames
-    private static double oldDeltaTimeSum = 0;
-    private static double deltaTimeSum = 0;
-    private static int deltaTimeNumRecords = 0;
-    private static int avereragedOver = 60;
+    private double oldDeltaTimeSum = 0;
+    private double deltaTimeSum = 0;
+    private int deltaTimeNumRecords = 0;
+    private int avereragedOver = 60;
 
-    public static void recordDT(){
+
+    public void recordDT(){
 
         deltaTimeNumRecords++;
         if(deltaTimeNumRecords >= avereragedOver){
@@ -25,7 +26,7 @@ public class Time {
 
 
     }
-    public static double getDTAverage(){
+    public double getDTAverage(){
         if(oldDeltaTimeSum == 0){
             return deltaTimeSum/deltaTimeNumRecords;
         }

@@ -5,7 +5,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyInput implements KeyListener {
-    public KeyInput(Canvas canvas) {
+    private Input input;
+    public KeyInput(Input input, Canvas canvas) {
+        this.input = input;
         canvas.addKeyListener(this);
     }
 
@@ -13,22 +15,22 @@ public class KeyInput implements KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) Input.setKeyDown("Space");
-        else if (e.getKeyCode() == KeyEvent.VK_LEFT) Input.setKeyDown("Left");
-        else if (e.getKeyCode() == KeyEvent.VK_RIGHT) Input.setKeyDown("Right");
-        else if (e.getKeyCode() == KeyEvent.VK_UP) Input.setKeyDown("Up");
-        else if (e.getKeyCode() == KeyEvent.VK_DOWN) Input.setKeyDown("Down");
-        else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) Input.setKeyDown("Escape");
-        else Input.setKeyDown(KeyEvent.getKeyText(e.getKeyCode()));
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) input.setKeyDown("Space");
+        else if (e.getKeyCode() == KeyEvent.VK_LEFT) input.setKeyDown("Left");
+        else if (e.getKeyCode() == KeyEvent.VK_RIGHT) input.setKeyDown("Right");
+        else if (e.getKeyCode() == KeyEvent.VK_UP) input.setKeyDown("Up");
+        else if (e.getKeyCode() == KeyEvent.VK_DOWN) input.setKeyDown("Down");
+        else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) input.setKeyDown("Escape");
+        else input.setKeyDown(KeyEvent.getKeyText(e.getKeyCode()));
     }
 
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) Input.setKeyUp("Space");
-        else if (e.getKeyCode() == KeyEvent.VK_LEFT) Input.setKeyUp("Left");
-        else if (e.getKeyCode() == KeyEvent.VK_RIGHT) Input.setKeyUp("Right");
-        else if (e.getKeyCode() == KeyEvent.VK_UP) Input.setKeyUp("Up");
-        else if (e.getKeyCode() == KeyEvent.VK_DOWN) Input.setKeyUp("Down");
-        else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) Input.setKeyUp("Escape");
-        else Input.setKeyUp(KeyEvent.getKeyText(e.getKeyCode()));
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) input.setKeyUp("Space");
+        else if (e.getKeyCode() == KeyEvent.VK_LEFT) input.setKeyUp("Left");
+        else if (e.getKeyCode() == KeyEvent.VK_RIGHT) input.setKeyUp("Right");
+        else if (e.getKeyCode() == KeyEvent.VK_UP) input.setKeyUp("Up");
+        else if (e.getKeyCode() == KeyEvent.VK_DOWN) input.setKeyUp("Down");
+        else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) input.setKeyUp("Escape");
+        else input.setKeyUp(KeyEvent.getKeyText(e.getKeyCode()));
     }
 }
