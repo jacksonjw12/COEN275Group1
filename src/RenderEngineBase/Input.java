@@ -20,7 +20,7 @@ public class Input {
     }
 
     public boolean getKey(String keyCode) {
-        return keys.getOrDefault(keyCode, false);
+        return keysDown.getOrDefault(keyCode, false);
     }
 
     public boolean getKeyDown(String keyCode) {

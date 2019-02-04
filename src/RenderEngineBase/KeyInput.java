@@ -12,6 +12,7 @@ public class KeyInput implements KeyListener {
     }
 
     public void keyTyped(KeyEvent e) {
+
     }
 
     public void keyPressed(KeyEvent e) {
@@ -22,6 +23,7 @@ public class KeyInput implements KeyListener {
         else if (e.getKeyCode() == KeyEvent.VK_DOWN) input.setKeyDown("Down");
         else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) input.setKeyDown("Escape");
         else input.setKeyDown(KeyEvent.getKeyText(e.getKeyCode()));
+
     }
 
     public void keyReleased(KeyEvent e) {

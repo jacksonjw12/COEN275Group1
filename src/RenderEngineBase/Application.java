@@ -25,9 +25,15 @@ public class Application {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(1000, 1000);
 
+
+
+
+
         canvas = new Canvas();
         frame.getContentPane().add(canvas);
         input = new Input(canvas);
+        frame.getContentPane().requestFocus();
+
 
 
 

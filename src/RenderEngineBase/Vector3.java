@@ -106,6 +106,26 @@ public class Vector3 {
         }
         return true;
     }
+    public void enforceAbsoluteValue(double value){
+        if(x > value){
+            x = value;
+        }
+        else if(x < -value){
+            x = -value;
+        }
+        if(y > value){
+            y = value;
+        }
+        else if(y < -value){
+            y = -value;
+        }
+        if(z > value){
+            z = value;
+        }
+        else if(z < -value){
+            z = -value;
+        }
+    }
 
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";

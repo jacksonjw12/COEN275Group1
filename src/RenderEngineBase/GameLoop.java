@@ -20,7 +20,6 @@ public class GameLoop implements Runnable{
 
         // Game Loop
         while (isRunning) {
-
             //updateGameState();
             game.getCurrentScene().update(time,application.getInput(),application);
             renderer.render(game.getCurrentScene(),time);

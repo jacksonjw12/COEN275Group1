@@ -1,51 +1,45 @@
 package RenderEngineBase;
 
-public class Scene {
-    public double lineX;//for test
-    public double lineY;//for test
-    double xVel = 0;
-    double yVel = 0;
-    double size = 100;
-    public Scene(){
+import java.util.ArrayList;
 
+public class Scene {
+
+    private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+    private Camera activeCamera;
+    private ArrayList<GUIElement> guiElements = new ArrayList<GUIElement>();
+
+
+    public Scene(){
+        this.activeCamera = new Camera(new Vector3(-1,0,-1));
     }
+
     public void update(Time time,Input input,Application application){
 
-        double acceleration = 20;
-        //lineX+=Time.deltaTime*15;
-        if(input.getKey("Up")){
-            yVel-=time.deltaTime*acceleration;
-        }
-        if(input.getKey("Down")){
-            yVel+=time.deltaTime*acceleration;
-        }
-        if(input.getKey("Left")){
-            xVel-=time.deltaTime*acceleration;
-        }
-        if(input.getKey("Right")){
-            xVel+=time.deltaTime*acceleration;
-        }
-        lineX += time.deltaTime * xVel*10;
-        lineY += time.deltaTime * yVel*10;
-        xVel = xVel;
-        yVel = yVel;
-        if(lineX < 0){
-            lineX = 0;
-            xVel*=-1;
-        }
-        else if(lineX+ size > application.getWidth()){
-            lineX = application.getWidth()-size;
-            xVel*=-1;
-        }
-        if(lineY < 0){
-            lineY = 0;
-            yVel *=-1;
-        }
-        else if(lineY+ size > application.getHeight()){
-            lineY = application.getHeight()-size;
-            yVel *=-1;
-        }
 
+    }
+
+    public void addGameObject(GameObject object) {
+        gameObjects.add(object);
+    }
+
+    public void removeGameObject(GameObject object) {
+        gameObjects.remove(gameObjects.indexOf(object));
+    }
+
+    public ArrayList<GameObject> getGameObjects() {
+        return gameObjects;
+    }
+
+    public void clearScene() {
+        gameObjects.clear();
+    }
+
+    public void setActiveCamera(Camera camera) {
+        activeCamera = camera;
+    }
+
+    public Camera getActiveCamera() {
+        return activeCamera;
     }
 
 
