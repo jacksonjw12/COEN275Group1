@@ -148,4 +148,7 @@ public class Vector3 {
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
     }
+    public String toRoundString() {
+        return String.format("(x: %.2f, y: %.2f, z: %.2f)",x,y,z);
+    }
 }

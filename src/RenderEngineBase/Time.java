@@ -9,13 +9,14 @@ public class Time {
     private double oldDeltaTimeSum = 0;
     private double deltaTimeSum = 0;
     private int deltaTimeNumRecords = 0;
-    private int avereragedOver = 60;
+    private int averagedOver = 60;
 
 
     public void recordDT(){
+        frameNumber++;
 
         deltaTimeNumRecords++;
-        if(deltaTimeNumRecords >= avereragedOver){
+        if(deltaTimeNumRecords >= averagedOver){
             oldDeltaTimeSum = deltaTimeSum;
             deltaTimeSum = 0;
             deltaTimeNumRecords = 0;
@@ -28,9 +29,15 @@ public class Time {
     }
     public double getDTAverage(){
         if(oldDeltaTimeSum == 0){
-            return deltaTimeSum/deltaTimeNumRecords;
+            if(deltaTime == 0){
+                return 1;
+            }
+            else{
+                return deltaTime;
+            }
+
         }
-        return oldDeltaTimeSum/avereragedOver;
+        return oldDeltaTimeSum/averagedOver;
     }
 
 

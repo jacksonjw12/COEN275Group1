@@ -3,7 +3,7 @@ package RenderEngineBase;
 public class CubeScene extends Scene {
 
     public CubeScene(){
-        super();
+        super("Cube Scene");
         super.addGameObject(new Model("cube.obj"));
     }
 

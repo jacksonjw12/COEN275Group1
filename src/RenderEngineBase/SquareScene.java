@@ -8,7 +8,7 @@ public class SquareScene extends Scene {
     double size = 100;
 
     public SquareScene(){
-        super();
+        super("Test Scene");
     }
     public void update(Time time,Input input,Application application){
 

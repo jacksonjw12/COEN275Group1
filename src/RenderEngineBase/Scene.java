@@ -7,16 +7,23 @@ public class Scene {
     private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
     private Camera activeCamera;
     private ArrayList<GUIElement> guiElements = new ArrayList<GUIElement>();
-
+    private String name = "Unnamed Scene";
 
     public Scene(){
         this.activeCamera = new Camera(new Vector3(-1,0,-1));
+    }
+    public Scene(String name){
+        this.activeCamera = new Camera(new Vector3(-1,0,-1));
+        this.name = name;
     }
 
     public void update(Time time,Input input,Application application){
 
 
     }
+    public String getName(){return this.name;}
+    public void setName(String name){this.name=name;}
+
 
     public void addGameObject(GameObject object) {
         gameObjects.add(object);

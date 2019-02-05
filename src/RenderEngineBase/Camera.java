@@ -22,4 +22,6 @@ public class Camera extends GameObject {
     public void setFov(double fov) {
         this.fov = fov;
     }
+
+
 }

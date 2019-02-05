@@ -61,4 +61,7 @@ public class Quaternion {
                 w * q.z + x * q.y - y * q.x + z * q.w
         );
     }
+    public String toRoundString() {
+        return String.format("(x: %.2f, y: %.2f, z: %.2f, w: %.2f)",x,y,z,w);
+    }
 }

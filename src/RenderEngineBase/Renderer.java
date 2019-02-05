@@ -29,8 +29,14 @@ public class Renderer {
         //System.out.println("frame");
         drawCameraView(scene,g);
 
-//        g.setColor(Color.ORANGE);
-//        g.drawString(Double.toString(1/time.getDTAverage()),10,10);
+        g.setColor(Color.ORANGE);
+        g.drawString("FPS: " + Integer.toString((int)(1/time.getDTAverage())),10,15);
+
+        g.drawString("camera pos: "+scene.getActiveCamera().getPosition().toRoundString(),10,30);
+        g.drawString("camera rot: "+scene.getActiveCamera().getRotation().toRoundString(),10,45);
+        g.drawString("# GameObjects: " +scene.getGameObjects().size(),10,60);
+        g.drawString("Scene: " +scene.getName(),10,75);
+
 //
 //        g.fillRect((int)scene.lineX, (int)scene.lineY, 100, 100); // arbitrary rendering logic
 
