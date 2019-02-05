@@ -127,6 +127,24 @@ public class Vector3 {
         }
     }
 
+
+    public void rotateMagnitude(Quaternion rot){
+
+//        Vector3 rotation = rot.getEulerAngles();
+//        Vector3 forward = new Vector3(-Math.cos(Math.PI/2-rotation.z)*Math.sin(rotation.x),Math.sin(Math.PI/2-rotation.z)*Math.sin(rotation.x),Math.sin(-Math.PI/2+rotation.x));
+//        Vector3 left = new Vector3(-Math.cos(-rotation.z)*Math.sin(rotation.x),Math.sin(-rotation.z)*Math.sin(rotation.x),0);
+//        Vector3 up = new Vector3(-Math.cos(Math.PI/2-rotation.z)*Math.sin(rotation.x+Math.PI/2),Math.sin(Math.PI/2-rotation.z)*Math.sin(rotation.x+Math.PI/2),Math.sin(rotation.x));
+//        forward.scale(z);
+//        left.scale(x);
+//        up.scale(y);
+//        up.add(forward);
+//        up.add(left);
+//        up.scale(-1);
+//        this.x = up.x;
+//        this.y = up.y;
+//        this.z = up.z;
+    }
+
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
     }

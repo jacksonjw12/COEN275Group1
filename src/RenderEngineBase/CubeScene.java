@@ -55,23 +55,23 @@ public class CubeScene extends Scene {
 //        velocity.set(accel);
         velocity.enforceAbsoluteValue(3);
         camera.getVelocity().scale(.9);
-//        camrea.getVelocity()
-//        System.out.println(camera.getVelocity());
-        //System.out.println(camera.getVelocity());
 
         Vector3 vel = camera.getVelocity().getCopy();
         vel.scale(time.deltaTime);
+
+        vel.rotateMagnitude(camera.getRotation());
+        vel = camera.getRotation().getRotatedPoint(vel);
+
         camera.addPosition(vel);
 
         camera.addRotation(rot);
-        //System.out.println(camera.getPosition());
 
     }
 
     public void update(Time time,Input input,Application application){
 
         flyCamera(time,input);
-        //super.getGameObjects().get(0).setRotation(new Vector3(.1*System.currentTimeMillis()/100,.1*System.currentTimeMillis()/100,.1*System.currentTimeMillis()/100));
+        super.getGameObjects().get(0).setRotation(new Vector3(0,.1*System.currentTimeMillis()/100,0));
 
     }
 }

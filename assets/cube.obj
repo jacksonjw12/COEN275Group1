@@ -27,6 +27,6 @@ f 5 8 6
 usemtl 00ffff
 f 1 5 6
 f 1 6 2
-usemtl 000000
+usemtl ffffff
 f 2 6 8
 f 2 8 4
