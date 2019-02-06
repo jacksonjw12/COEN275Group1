@@ -168,13 +168,7 @@ public class Renderer {
             }
         }
 
-        // Draw debug lines
-//        for (int i = 0; i < debugLineStart.size(); i++) {
-//            Vector3 start = project(debugLineStart.get(i));
-//            Vector3 end = project(debugLineEnd.get(i));
-//            context.setColor(Color.decode("#" + debugLineColor.get(i)));
-//            context.drawLine((int) start.x, (int) start.y, (int) end.x, (int) end.y);
-//        }
+
     }
 
 

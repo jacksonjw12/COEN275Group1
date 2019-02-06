@@ -5,6 +5,7 @@ public class CubeScene extends Scene {
     public CubeScene(){
         super("Cube Scene");
         super.addGameObject(new Model("cube.obj"));
+        super.getGameObjects().get(0).setScale(new Vector3(.2,.2,.2));
     }
 
 
@@ -44,7 +45,7 @@ public class CubeScene extends Scene {
         if(input.getKey("Right")){
             rot.y += .1;
         }
-        rot.scale(.25);
+        rot.scale(.25 );
         //accel.normalize();
         //System.out.println(accel);
 //        accel.scale(inertia*time.deltaTime);
@@ -54,7 +55,7 @@ public class CubeScene extends Scene {
         velocity.add(accel);
 //        velocity.set(accel);
         velocity.enforceAbsoluteValue(3);
-        camera.getVelocity().scale(.9);
+        //System.out.println(time.deltaTime);
 
         Vector3 vel = camera.getVelocity().getCopy();
         vel.scale(time.deltaTime);
@@ -63,6 +64,7 @@ public class CubeScene extends Scene {
         vel = camera.getRotation().getRotatedPoint(vel);
 
         camera.addPosition(vel);
+        camera.getVelocity().scale(.8);
 
         camera.addRotation(rot);
 
@@ -71,7 +73,7 @@ public class CubeScene extends Scene {
     public void update(Time time,Input input,Application application){
 
         flyCamera(time,input);
-        super.getGameObjects().get(0).setRotation(new Vector3(0,.1*System.currentTimeMillis()/100,0));
+        super.getGameObjects().get(0).setRotation(new Vector3(0,.1*System.currentTimeMillis()/200,0));
 
     }
 }

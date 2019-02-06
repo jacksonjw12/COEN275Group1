@@ -121,9 +121,10 @@ Scene "1" *-- "1..*" GUIElement
 Scene "1" *-- "1..*" GameObject
 Camera "1" -- "1" Scene
 Application "1" -- "1" Input
-GameObject -- Model
+GameObject <-- Model
 Model "1" -- "1..*" Face
 GameLoop --- Time
+Model ---- Polygon2D
 
 
 
