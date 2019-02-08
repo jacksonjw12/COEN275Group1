@@ -21,9 +21,43 @@ public class Renderer {
 
     public void render(Scene scene,Time time){
 
-        Graphics g = this.application.getStrategy().getDrawGraphics();
+        Graphics2D g = (Graphics2D) this.application.getStrategy().getDrawGraphics();
+        g.setRenderingHint(
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_OFF);
+        g.setRenderingHint(
+                RenderingHints.KEY_ALPHA_INTERPOLATION,
+                RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED
+        );
+        g.setRenderingHint(
+                RenderingHints.KEY_COLOR_RENDERING,
+                RenderingHints.VALUE_COLOR_RENDER_SPEED
+        );
+        g.setRenderingHint(
+                RenderingHints.KEY_DITHERING,
+                RenderingHints.VALUE_DITHER_DISABLE
+        );
+        g.setRenderingHint(
+                RenderingHints.KEY_FRACTIONALMETRICS,
+                RenderingHints.VALUE_FRACTIONALMETRICS_OFF
+        );
+        g.setRenderingHint(
+                RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR
+        );
+        g.setRenderingHint(
+                RenderingHints.KEY_RENDERING,
+                RenderingHints.VALUE_RENDER_SPEED
+        );
+        g.setRenderingHint(
+                RenderingHints.KEY_STROKE_CONTROL,
+                RenderingHints.VALUE_STROKE_PURE
+        );
+
+
 
         g.setColor(Color.BLACK);
+
         g.fillRect(0, 0, application.getWidth(), application.getHeight());
 
         //System.out.println("frame");
@@ -46,7 +80,7 @@ public class Renderer {
         this.application.getStrategy().show();
     }
 
-    public void drawCameraView(Scene scene, Graphics context) {
+    public void drawCameraView(Scene scene, Graphics2D context) {
         // Get the camera
        camera = scene.getActiveCamera();
         if (camera == null) {
@@ -133,6 +167,7 @@ public class Renderer {
                         Vector3 v1 = vertices[vertexIndexes[0]].getDifference(vertices[vertexIndexes[1]]);
                         Vector3 v2 = vertices[vertexIndexes[2]].getDifference(vertices[vertexIndexes[1]]);
                         double brightness = v1.getCrossProduct(v2).getAngleDifference(new Vector3(5, 10, 0)) / Math.PI;
+                        //double brightness = v1.getCrossProduct(v2).getAngleDifference(camera.getRotation().getEulerAngles()) / Math.PI;
                         polygons.add(new Polygon2D(faceVertices, project(centroids[face]), faces[face].getColor(), brightness));
                     }
                 }
@@ -161,10 +196,11 @@ public class Renderer {
                 }
 
                 context.setColor(Color.decode("#" + polygon.getColor()));
+//                context.setColor(Color.white);
                 context.fillPolygon(x, y, x.length);
 //		    	context.setColor(Color.black); // Set color to black for the below options
 //		    	context.drawPolygon(x, y, x.length); // Draw wireframe outline
-//		    	context.drawOval((int) polygon.getProjectedCentroid().x, (int) polygon.getProjectedCentroid().y, 10, 10); // Draw centroid used in z-sorting
+//		    	context.drawRect((int) polygon.getProjectedCentroid().x, (int) polygon.getProjectedCentroid().y, 10, 10); // Draw centroid used in z-sorting
             }
         }
 

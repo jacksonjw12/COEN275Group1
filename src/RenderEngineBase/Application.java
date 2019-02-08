@@ -35,21 +35,23 @@ public class Application {
         frame.getContentPane().requestFocus();
 
 
+        frame.setVisible(true);
 
 
         BufferCapabilities bc = new BufferCapabilities(new ImageCapabilities(true),new ImageCapabilities(true),null);
         try{
-            this.canvas.createBufferStrategy(2,bc);
+           this.canvas.createBufferStrategy(2,bc);
         }
         catch(java.awt.AWTException e){
             System.out.println("bad buffer capabilities");
             this.canvas.createBufferStrategy(2);
         }
+//        this.canvas.createBufferStrategy(2);
+
         strategy = this.canvas.getBufferStrategy();
 
 
 
-        frame.setVisible(true);
 
 
 

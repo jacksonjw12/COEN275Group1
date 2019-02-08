@@ -9,7 +9,7 @@ public class Game {
 
         this.application = new Application( this);
         gameThread = new Thread(new GameLoop(this,this.application));
-        gameThread.setPriority(Thread.MIN_PRIORITY);
+        gameThread.setPriority(Thread.MAX_PRIORITY);
         // start Game.
 
         this.scenes =new Scene[1];

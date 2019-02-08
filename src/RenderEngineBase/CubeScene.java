@@ -4,8 +4,19 @@ public class CubeScene extends Scene {
 
     public CubeScene(){
         super("Cube Scene");
-        super.addGameObject(new Model("cube.obj"));
-        super.getGameObjects().get(0).setScale(new Vector3(.2,.2,.2));
+       // super.addGameObject(new Model("cow.obj"));
+        //super.getGameObjects().get(0).setScale(new Vector3(.2,.2,.2));
+
+        for(int i = 0; i< 3; i++){
+            for(int j = 0; j< 3; j++){
+                for(int k = 0; k<3; k++){
+                    Model m = new Model("cube.obj");
+                    m.setPosition(new Vector3(i*2,j*2,k*2));
+                    super.addGameObject(m);
+                }
+            }
+        }
+        //super.addGameObject(new Model("cube.obj"));
     }
 
 
@@ -73,7 +84,10 @@ public class CubeScene extends Scene {
     public void update(Time time,Input input,Application application){
 
         flyCamera(time,input);
-        super.getGameObjects().get(0).setRotation(new Vector3(0,.1*System.currentTimeMillis()/200,0));
+        //super.getGameObjects().get(0).setRotation(new Vector3(.1*System.currentTimeMillis()/200,.1*System.currentTimeMillis()/200,.1*System.currentTimeMillis()/200));
+        for(int i = 0; i< super.getGameObjects().size(); i++){
+            super.getGameObjects().get(i).setRotation(new Vector3(.1*System.currentTimeMillis()/200,.1*System.currentTimeMillis()/200,.1*System.currentTimeMillis()/200));
 
+        }
     }
 }
