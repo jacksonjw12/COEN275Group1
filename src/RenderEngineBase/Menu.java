@@ -32,6 +32,6 @@ public abstract class Menu extends JFrame{
 	}
 	
 	public void Close() {
-		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+		dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 	}
 }

@@ -16,14 +16,10 @@ public class PauseMenu extends Menu {
 		super.btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				Close();
+				// TODO: unpause game
 			}
 			});
 		
 		Show();
 	}
-	
-	
-	
-	
-	
 }
